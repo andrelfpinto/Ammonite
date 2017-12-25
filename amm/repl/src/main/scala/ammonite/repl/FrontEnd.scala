@@ -48,16 +48,14 @@ object FrontEnd{
 
       val terminal = makeTerm()
 //      term.init()
-      val reader = LineReaderBuilder.builder()
-                    .terminal(terminal)
-//                    .completer(completer)
-//                    .parser(parser)
-                    .build()
 //      val reader = new ConsoleReader(input, output, terminal)
 //      reader.setHistoryEnabled(true)
       var signatures = Seq.empty[String]
-      reader.addCompleter(new org.jline.reader.completer.Completer {
-//
+      val completer = new org.jline.reader.Completer {
+        import org.jline.reader.{LineReader, ParsedLine, Candidate}
+
+        def complete(reader: LineReader, line: ParsedLine, candidates: java.util.List[Candidate]) = {
+        }
 //        def complete(_buf: String, cursor: Int, candidates: JList[CharSequence]): Int = {
 //          val buf = if (_buf == null) "" else _buf
 //          import collection.JavaConversions._
@@ -76,7 +74,7 @@ object FrontEnd{
 //
 //          completionBase
 //        }
-      })
+      }
 //      reader.setExpandEvents(false)
 //      reader.setHandleUserInterrupt(true)
 //      val defaultHandler = reader.getCompletionHandler
@@ -93,6 +91,12 @@ object FrontEnd{
 //
 //      history.foreach(reader.getHistory.add)
 //
+      val reader = LineReaderBuilder.builder()
+                    .terminal(terminal)
+//                    .completer(completer)
+//                    .parser(parser)
+                    .build()
+
       @tailrec def readCode(buffered: String): Res[(String, Seq[String])] = {
         Option(reader.readLine(
           if (buffered.isEmpty) prompt
