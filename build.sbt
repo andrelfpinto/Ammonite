@@ -231,7 +231,7 @@ lazy val ammRepl = project
     crossVersion := CrossVersion.full,
     name := "ammonite-repl",
     libraryDependencies ++= Seq(
-      "jline" % "jline" % "2.14.3",
+      "org.jline" % "jline" % "3.5.1",
       "com.github.javaparser" % "javaparser-core" % "3.2.5",
       "com.github.scopt" %% "scopt" % "3.5.0" % Test
     ),
