@@ -20,6 +20,8 @@ object AutocompleteTests extends TestSuite{
         buf
       )
       val left = cmp(completions.toSet)
+//      List(caretCode, index, completions, signatures, left).foreach(println)
+//      println()
       assert(left == Set())
       val sigLeft = sigs(signatures.toSet)
       assert(sigLeft == Set())
@@ -48,7 +50,7 @@ object AutocompleteTests extends TestSuite{
 
       'import - checking{ complete =>
         complete("""import <caret>""", Set("java", "javax", "scala", "javassist") -- _)
-        complete("""import j<caret>""", Set("java", "javax", "jline", "jawn", "javassist") -- _)
+        complete("""import j<caret>""", Set("java", "javax", "jawn", "javassist") -- _)
         complete(
           """import ja<caret>""",
           x => Set("java", "javax", "jawn", "javassist") ^ (x - "javafx")
