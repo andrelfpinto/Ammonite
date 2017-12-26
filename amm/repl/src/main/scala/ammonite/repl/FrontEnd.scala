@@ -58,25 +58,24 @@ object FrontEnd{
           reader: LineReader,
           line: ParsedLine,
           candidates: java.util.List[Candidate]) = {
-        }
 //        def complete(_buf: String, cursor: Int, candidates: JList[CharSequence]): Int = {
 //          val buf = if (_buf == null) "" else _buf
 //          import collection.JavaConversions._
-//          val (completionBase, completions, sigs) = compilerComplete(
-//            cursor,
-//            buf
-//          )
-//          if (completions.nonEmpty) {
-//            candidates.addAll(completions.sorted)
-//            signatures = sigs.sorted
-//          } else if (sigs.nonEmpty){
-//            reader.println()
-//            sigs.foreach(reader.println)
-//            reader.drawLine()
-//          }
-//
-//          completionBase
-//        }
+          val (completionBase, completions, sigs) = compilerComplete(
+            line.cursor,
+            line.line
+          )
+          if (completions.nonEmpty) {
+            candidates.addAll(completions.sorted)
+            signatures = sigs.sorted
+          } else if (sigs.nonEmpty){
+            reader.println()
+            sigs.foreach(reader.println)
+            reader.drawLine()
+          }
+
+          completionBase
+        }
       }
 //      reader.setExpandEvents(false)
 //      reader.setHandleUserInterrupt(true)
