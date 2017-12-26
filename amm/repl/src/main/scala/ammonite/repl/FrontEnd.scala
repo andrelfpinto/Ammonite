@@ -54,7 +54,10 @@ object FrontEnd{
       val completer = new org.jline.reader.Completer {
         import org.jline.reader.{LineReader, ParsedLine, Candidate}
 
-        def complete(reader: LineReader, line: ParsedLine, candidates: java.util.List[Candidate]) = {
+        def complete(
+          reader: LineReader,
+          line: ParsedLine,
+          candidates: java.util.List[Candidate]) = {
         }
 //        def complete(_buf: String, cursor: Int, candidates: JList[CharSequence]): Int = {
 //          val buf = if (_buf == null) "" else _buf
