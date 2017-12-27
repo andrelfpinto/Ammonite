@@ -32,7 +32,7 @@ object ProjectTests extends TestSuite{
         'akkahttp - {
             if (!scala2_12) check.session(
               """
-              @ import $ivy.`com.typesafe.akka::akka-http-experimental:1.0-M3`
+              @ //import $ivy.`com.typesafe.akka::akka-http-experimental:1.0-M3`
 
               @ implicit val system = akka.actor.ActorSystem()
 
